@@ -12,6 +12,7 @@
 **Routing system**
 
 - React router
+- Nested public and private routes
 
 ** Other dependencies **
 
