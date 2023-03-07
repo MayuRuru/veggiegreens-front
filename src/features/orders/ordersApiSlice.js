@@ -10,7 +10,7 @@ const initialState = ordersAdapter.getInitialState();
 
 export const ordersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getorders: builder.query({
+    getOrders: builder.query({
       query: () => "/orders",
       validateStatus: (response, result) => {
         return response.status === 200 && !result.isError;
@@ -35,7 +35,7 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetordersQuery } = ordersApiSlice;
+export const { useGetOrdersQuery } = ordersApiSlice;
 
 // returns the query result object
 export const selectOrdersResult = ordersApiSlice.endpoints.getOrders.select();
