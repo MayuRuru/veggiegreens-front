@@ -17,7 +17,7 @@
   --INACTIVE: #B99B6B;
   --LINK-COLOR: #B99B6B;
   --LINK-HOVER: #B99B6B;
-  --NOTE-BGCOLOR: #183A1D;
+  --ORDER-BGCOLOR: #183A1D;
   --STATUS-COMPLETE: #AA5656
   --STATUS-OPEN: #AA5656;
   --TABLE-BGCOLOR: #F1DBBF;
@@ -224,23 +224,23 @@ tr {
   background-color: var(--INACTIVE);
 }
 
-/* ||  NOTE */
+/* ||  ORDER */
 
-.note__created,
-.note__updated,
-.note__username {
+.order__created,
+.order__updated,
+.order__username {
   display: none;
 }
 
-.note__status {
+.order__status {
   font-weight: bold;
 }
 
-.note__status--open {
+.order__status--open {
   color: var(--STATUS-OPEN);
 }
 
-.note__status--completed {
+.order__status--completed {
   color: var(--STATUS-COMPLETE);
 }
 
@@ -356,13 +356,13 @@ tr {
     font-size: 1.5rem;
   }
 
-  .table--notes {
+  .table--orders {
     grid-template-columns: repeat(3, 1fr) 2fr repeat(2, 1fr);
   }
 
-  .note__created,
-  .note__updated,
-  .note__username {
+  .order__created,
+  .order__updated,
+  .order__username {
     display: block
   }
 
