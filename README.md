@@ -14,6 +14,21 @@
 - React router
 - Nested public and private routes
 
-** Other dependencies **
+**State management and API layer**
+
+- Redux Toolkit
+- RTK Query
+
+**Other dependencies**
 
 - Font awesome
+- Express
+- Cookie-parser
+- Cors
+
+**Node and REST API dependencies**
+
+- Date-fns
+- Uuid
+- Dotenv
+- Mongoose
