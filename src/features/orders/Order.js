@@ -5,8 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectOrderById } from "./ordersApiSlice";
 
-import React from "react";
-
 const Order = ({ orderId }) => {
   const order = useSelector((state) => selectOrderById(state, orderId));
 

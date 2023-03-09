@@ -8,8 +8,8 @@ import OrdersList from "./features/orders/OrdersList";
 import UsersList from "./features/users/UsersList";
 import EditUser from "./features/users/EditUser";
 import NewUserForm from "./features/users/NewUserForm";
-import EditNote from "./features/orders/EditNote";
-import NewNote from "./features/orders/NewNote";
+import EditOrder from "./features/orders/EditOrder";
+import NewOrder from "./features/orders/NewOrder";
 
 function App() {
   return (
@@ -32,8 +32,8 @@ function App() {
           {/* Orders routes: */}
           <Route path="orders">
             <Route index element={<OrdersList />} />
-            <Route path=":id" element={<EditNote />} />
-            <Route path="new" element={<NewNote />} />
+            <Route path=":id" element={<EditOrder />} />
+            <Route path="new" element={<NewOrder />} />
           </Route>
         </Route>
         {/*End Dash - Private routes*/}
