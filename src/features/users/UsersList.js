@@ -8,7 +8,7 @@ const UsersList = () => {
     isSuccess,
     isError,
     error,
-  } = useGetUsersQuery;
+  } = useGetUsersQuery();
 
   let content;
   if (isLoading) content = <p>Loading...</p>;

@@ -8,7 +8,7 @@ const OrdersList = () => {
     isSuccess,
     isError,
     error,
-  } = useGetOrdersQuery;
+  } = useGetOrdersQuery();
 
   let content;
   if (isLoading) content = <p>Loading...</p>;

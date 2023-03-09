@@ -10,6 +10,7 @@ const initialState = ordersAdapter.getInitialState();
 
 export const ordersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
+    // GET Orders
     getOrders: builder.query({
       query: () => "/orders",
       validateStatus: (response, result) => {
@@ -32,10 +33,46 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
         } else return [{ type: "Order", id: "LIST" }];
       },
     }),
+    // POST Order
+    addNewNote: builder.mutation({
+      query: (initialNote) => ({
+        url: "/notes",
+        method: "POST",
+        body: {
+          ...initialNote,
+        },
+      }),
+      invalidatesTags: [{ type: "Note", id: "LIST" }],
+    }),
+    // PATCH Order
+    updateNote: builder.mutation({
+      query: (initialNote) => ({
+        url: "/notes",
+        method: "PATCH",
+        body: {
+          ...initialNote,
+        },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "Note", id: arg.id }],
+    }),
+    // DELETE Order
+    deleteNote: builder.mutation({
+      query: ({ id }) => ({
+        url: `/notes`,
+        method: "DELETE",
+        body: { id },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "Note", id: arg.id }],
+    }),
   }),
 });
 
-export const { useGetOrdersQuery } = ordersApiSlice;
+export const {
+  useGetOrdersQuery,
+  useAddNewNoteMutation,
+  useUpdateNoteMutation,
+  useDeleteNoteMutation,
+} = ordersApiSlice;
 
 // returns the query result object
 export const selectOrdersResult = ordersApiSlice.endpoints.getOrders.select();

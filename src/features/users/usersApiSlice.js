@@ -6,8 +6,11 @@ const usersAdapter = createEntityAdapter({});
 
 const initialState = usersAdapter.getInitialState();
 
+// Endpoints definition for users api slice
+// which injects them into the main api slice for Redux RTK Query
 export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
+    // GET Users endpoint
     getUsers: builder.query({
       query: () => "/users",
       validateStatus: (response, result) => {
@@ -34,11 +37,50 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         } else return [{ type: "User", id: "LIST" }];
       },
     }),
+    // POST User endpoint
+    // which is a mutation not query builder!
+    addNewUser: builder.mutation({
+      query: (initialUserData) => ({
+        url: "/users",
+        method: "POST",
+        body: {
+          ...initialUserData,
+        },
+      }),
+      // force to update list:
+      invalidatesTags: [{ type: "User", id: "LIST" }],
+    }),
+    // PATCH User endpoint
+    updateUser: builder.mutation({
+      query: (initialUserData) => ({
+        url: "/users",
+        method: "PATCH",
+        body: {
+          ...initialUserData,
+        },
+      }),
+      // with the tag invalidates that user id:
+      invalidatesTags: (result, error, arg) => [{ type: "User", id: arg.id }],
+    }),
+    // DELETE User endpoint
+    deleteUser: builder.mutation({
+      query: ({ id }) => ({
+        url: `/users`,
+        method: "DELETE",
+        body: { id },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "User", id: arg.id }],
+    }),
   }),
 });
 
-// export the generated hook:
-export const { useGetUsersQuery } = usersApiSlice;
+// export the generated hookS:
+export const {
+  useGetUsersQuery,
+  useAddNewUserMutation,
+  useUpdateUserMutation,
+  useDeleteUserMutation,
+} = usersApiSlice;
 
 // returns the query result object:
 export const selectUsersResult = usersApiSlice.endpoints.getUsers.select();
