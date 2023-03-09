@@ -6,7 +6,7 @@ import EditUserForm from "./EditUserForm";
 const EditUser = () => {
   const { id } = useParams();
 
-  // memoized selector:
+  // memoized selector - queries the data with no subscription:
   const user = useSelector((state) => selectUserById(state, id));
 
   const content = user ? <EditUserForm user={user} /> : <p>Loading...</p>;
