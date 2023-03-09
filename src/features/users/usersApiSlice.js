@@ -17,7 +17,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         // validate status:
         return response.status === 200 && !result.isError;
       },
-      keepUnusedDataFor: 5,
+      //keepUnusedDataFor: 5,
 
       transformResponse: (responseData) => {
         const loadedUsers = responseData.map((user) => {
