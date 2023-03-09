@@ -35,44 +35,44 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
       },
     }),
     // POST Order
-    addNewNote: builder.mutation({
-      query: (initialNote) => ({
-        url: "/notes",
+    addNewOrder: builder.mutation({
+      query: (initialOrder) => ({
+        url: "/orders",
         method: "POST",
         body: {
-          ...initialNote,
+          ...initialOrder,
         },
       }),
-      invalidatesTags: [{ type: "Note", id: "LIST" }],
+      invalidatesTags: [{ type: "Order", id: "LIST" }],
     }),
     // PATCH Order
-    updateNote: builder.mutation({
-      query: (initialNote) => ({
-        url: "/notes",
+    updateOrder: builder.mutation({
+      query: (initialOrder) => ({
+        url: "/orders",
         method: "PATCH",
         body: {
-          ...initialNote,
+          ...initialOrder,
         },
       }),
-      invalidatesTags: (result, error, arg) => [{ type: "Note", id: arg.id }],
+      invalidatesTags: (result, error, arg) => [{ type: "Order", id: arg.id }],
     }),
     // DELETE Order
-    deleteNote: builder.mutation({
+    deleteOrder: builder.mutation({
       query: ({ id }) => ({
-        url: `/notes`,
+        url: `/orders`,
         method: "DELETE",
         body: { id },
       }),
-      invalidatesTags: (result, error, arg) => [{ type: "Note", id: arg.id }],
+      invalidatesTags: (result, error, arg) => [{ type: "Order", id: arg.id }],
     }),
   }),
 });
 
 export const {
   useGetOrdersQuery,
-  useAddNewNoteMutation,
-  useUpdateNoteMutation,
-  useDeleteNoteMutation,
+  useAddNewOrderMutation,
+  useUpdateOrderMutation,
+  useDeleteOrderMutation,
 } = ordersApiSlice;
 
 // returns the query result object
