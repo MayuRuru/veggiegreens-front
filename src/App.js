@@ -10,6 +10,7 @@ import EditUser from "./features/users/EditUser";
 import NewUserForm from "./features/users/NewUserForm";
 import EditOrder from "./features/orders/EditOrder";
 import NewOrder from "./features/orders/NewOrder";
+import Prefetch from "./features/auth/Prefetch";
 
 function App() {
   return (
@@ -18,25 +19,27 @@ function App() {
         <Route index element={<Home />} />
         <Route path="login" element={<Login />} />
 
-        <Route path="dash" element={<DashLayout />}>
-          {/* From here protected routes: */}
-          <Route index element={<Welcome />} />
+        {/* From here protected routes: */}
+        <Route element={<Prefetch />}>
+          <Route path="dash" element={<DashLayout />}>
+            <Route index element={<Welcome />} />
 
-          {/* Users routes: */}
-          <Route path="users">
-            <Route index element={<UsersList />} />
-            <Route path=":id" element={<EditUser />} />
-            <Route path="new" element={<NewUserForm />} />
-          </Route>
+            {/* Users routes: */}
+            <Route path="users">
+              <Route index element={<UsersList />} />
+              <Route path=":id" element={<EditUser />} />
+              <Route path="new" element={<NewUserForm />} />
+            </Route>
 
-          {/* Orders routes: */}
-          <Route path="orders">
-            <Route index element={<OrdersList />} />
-            <Route path=":id" element={<EditOrder />} />
-            <Route path="new" element={<NewOrder />} />
+            {/* Orders routes: */}
+            <Route path="orders">
+              <Route index element={<OrdersList />} />
+              <Route path=":id" element={<EditOrder />} />
+              <Route path="new" element={<NewOrder />} />
+            </Route>
           </Route>
+          {/*End Dash - End Prefecth - Private routes*/}
         </Route>
-        {/*End Dash - Private routes*/}
       </Route>
     </Routes>
   );
