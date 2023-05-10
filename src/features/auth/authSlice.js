@@ -1,6 +1,6 @@
-import { creatSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-const authSlice = creatSlice({
+const authSlice = createSlice({
   name: "auth",
   initialState: { token: null },
   reducers: {
