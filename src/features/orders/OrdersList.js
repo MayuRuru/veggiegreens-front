@@ -8,7 +8,7 @@ const OrdersList = () => {
     isSuccess,
     isError,
     error,
-  } = useGetOrdersQuery(undefined, {
+  } = useGetOrdersQuery("ordersist", {
     pollingInterval: 15000,
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,
